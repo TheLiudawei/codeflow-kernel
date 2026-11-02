@@ -1,0 +1,6 @@
+# Normalise line endings so JSON reports and fixtures hash the same everywhere.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary

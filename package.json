@@ -1,0 +1,57 @@
+{
+  "name": "codeflow-kernel",
+  "version": "0.1.0",
+  "description": "Deterministic code-structure analysis for any repository: task pipeline from TODO markers, module graph, coupling score and feature index. Zero dependencies, no model calls, offline. CLI + MCP server.",
+  "type": "module",
+  "main": "lib/index.js",
+  "bin": {
+    "codeflow-kernel": "bin/codeflow-kernel.js",
+    "codeflow-kernel-mcp": "bin/codeflow-kernel-mcp.js"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./mcp": "./lib/mcp/server.js",
+    "./analysis": "./lib/analysis.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "assets",
+    "docs",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "bench": "node tests/bench.mjs",
+    "mcp": "node bin/codeflow-kernel-mcp.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "code-analysis",
+    "dependency-analysis",
+    "coupling",
+    "task-graph",
+    "codeflow",
+    "deterministic",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheLiudawei/codeflow-kernel.git"
+  },
+  "homepage": "https://github.com/TheLiudawei/codeflow-kernel#readme",
+  "bugs": {
+    "url": "https://github.com/TheLiudawei/codeflow-kernel/issues"
+  },
+  "dependencies": {},
+  "license": "MIT",
+  "author": "TheLiudawei"
+}
