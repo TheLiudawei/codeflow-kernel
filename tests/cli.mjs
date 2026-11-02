@@ -80,6 +80,12 @@ export async function run() {
     const written = JSON.parse(await readFile(outFile, 'utf8'))
     check(written.format === 'codeflow-kernel/1', '--out 写出的文件不是报告')
 
+    // --out 隐含 --json：不应再往 stdout 打人类可读内容。
+    const impliedFile = path.join(outDir, 'implied.json')
+    const implied = await cli(['coupling', root, '--out', impliedFile], { cwd: root })
+    check(implied.stdout.trim() === '', `--out 仍向 stdout 输出了内容: ${implied.stdout.slice(0, 200)}`)
+    check(JSON.parse(await readFile(impliedFile, 'utf8')).overall !== null, '--out 没有隐含 --json')
+
     // ---- 失败路径 -----------------------------------------------------------
     const missing = await runNode([BIN, 'analyze', path.join(root, 'does-not-exist')], { cwd: root })
     check(missing.code === 1, `不存在的路径应退出 1，实际 ${missing.code}`)
